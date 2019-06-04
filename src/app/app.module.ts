@@ -3,24 +3,37 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { ToastrModule } from 'ngx-toastr';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
+import { environment } from 'src/environments/environment';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { LoginComponent } from './components/login/login.component';
+import { ViewFormComponent } from './components/view-form/view-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormComponent,
-    DashboardComponent
+    DashboardComponent,
+    NavbarComponent,
+    LoginComponent,
+    ViewFormComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    ToastrModule
+    ToastrModule.forRoot()
   ],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]

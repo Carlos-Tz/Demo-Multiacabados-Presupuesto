@@ -9,10 +9,10 @@
   --page-inner-margin: 7mm;
   --page-inner-top: 1cm;
   --font: 'Open Sans', sans-serif;
-  --font-size: 0.9em;
+  --font-size: 1em;
   --background: #fafafa;
-  --text-color: #4369aa;
-  --logo-width: 3.5cm;
+  --text-color: #222;
+  --logo-width: 5cm;
   --input-text-color: #555;
 }
 *,
