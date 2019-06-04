@@ -103,9 +103,12 @@ export class FormService {
   }
 
   GetFormsList() {
-    this.formsList = this.db.list('forms-list', ref =>
-      ref.orderByChild('date')
-    );
+    this.formsList = this.db.list('forms-list');
     return this.formsList;
+  }
+
+  GetForm(key: string) {
+    this.formObject = this.db.object('forms-list/' + key);
+    return this.formObject;
   }
 }

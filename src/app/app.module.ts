@@ -6,6 +6,9 @@ import { ToastrModule } from 'ngx-toastr';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { DataTablesModule } from 'angular-datatables';
 
 import { AppComponent } from './app.component';
 import { FormComponent } from './components/form/form.component';
@@ -33,7 +36,10 @@ import { ViewFormComponent } from './components/view-form/view-form.component';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    AngularFireAuthModule,
+    AngularFirestoreModule,
+    DataTablesModule
   ],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]

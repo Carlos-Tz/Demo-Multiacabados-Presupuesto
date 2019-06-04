@@ -190,7 +190,7 @@ export class FormComponent implements OnInit {
 
   submitSurveyData = () => {
     this.formApi.AddForm(this.form_);
-    this.toastr.success('Encuesta Enviada!');
+    this.toastr.success('Guardado!');
     this.ResetForm();
   }
 

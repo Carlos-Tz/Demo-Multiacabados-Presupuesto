@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 //import 'materialize-css';
 import * as M from 'materialize-css/dist/js/materialize';
 //import { MaterializeAction } from 'angular2-materialize';
-//import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +12,14 @@ import * as M from 'materialize-css/dist/js/materialize';
 })
 export class NavbarComponent implements OnInit, AfterViewInit {
   @Input() public submitSurveyData: any;
-  @Input() public surveyForm: FormGroup;
+  @Input() public myForm1: FormGroup;
   @Input() public save: number;
   @Input() public goBack: any;
   @ViewChild('modal') modal: ElementRef;
   modalActions = new EventEmitter<string>();
 
 
-  constructor() { }
+  constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
