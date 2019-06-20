@@ -71,3 +71,8 @@ body {
   .page:first-of-type { margin-top: 0 !important; }
   .page:last-of-type { margin-bottom: 0 !important; }
 }
+
+.sign{
+  align-content: center;
+  width: 220px;
+}

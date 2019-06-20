@@ -160,20 +160,20 @@ header {
   } */
 
   .section2 {margin-top:4mm; margin-bottom: 1mm;}
-  .section2 .table {
+  .section2 .table, .section2a .table {
     display: table;
     width: 100%;
     border: 1px solid var(--text-color);
     border-radius: 2px;
   }
-  .section2 .table .tr.thead .td {
+  .section2 .table .tr.thead .td, .section2a .table .tr.thead .td {
     padding: 5px 0;
     background: var(--text-color);
     color: white;
     font-weight: 700;
     font-size: 0.9em;
   }
-  .section2 .tr {
+  .section2 .tr, .section2a .tr {
     display: table-row;
     height: 7mm;
     font-size: .9em;
@@ -185,17 +185,20 @@ header {
   .section2 .tr .td.description {
     padding: 2mm;
   }
-  .section2 .tr.thead {
+  .section2 .tr.thead, .section2a .tr.thead {
     display: table-header-group;
     height: 7mm;
     text-align: center;
    
   }
-  
   .section2 .tr.thead .td:nth-child(1){
-    width: calc(100% - 8.8cm);border-right: 0;
+    width: 0.7cm;
+    border-right: 0;
   }
-  .section2 .tr.thead .td:nth-child(2),
+  .section2 .tr.thead .td:nth-child(2){
+    width: calc(100% - 9.5cm);border-right: 0;
+  }
+  .section2 .tr.thead .td:nth-child(6),
   .section2 .tr.thead .td:nth-child(3),
   .section2 .tr.thead .td:nth-child(4),
   .section2 .tr.thead .td:nth-child(5){
@@ -203,7 +206,7 @@ header {
     border-right: 0;
   }
   
-  .section2 .td {
+  .section2 .td, .section2a .td {
     display: table-cell;
     vertical-align: middle;
     border-bottom: 1px solid #bbb;

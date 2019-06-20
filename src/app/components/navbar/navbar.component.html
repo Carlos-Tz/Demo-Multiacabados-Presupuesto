@@ -3,7 +3,8 @@
     <a [routerLink]="['/']" class="brand-logo_">
       <svg class="svg-logo_">
         <text class="text_" x="50%" y="50%" alignment-baseline="middle" text-anchor="middle">
-          <tspan class="tspan_" alignment-baseline="middle" text-anchor="middle">di</tspan>docu
+          <!-- <tspan class="tspan_" alignment-baseline="middle" text-anchor="middle">di</tspan>docu -->
+          Multiacabados
         </text>
       </svg>
     </a>
@@ -11,7 +12,7 @@
       <li *ngIf="save==1 || save==2"><a class="a" (click)='authService.SignOut()'>Salir</a></li>
       <li><a class="a" [routerLink]="['/panel']">Panel</a></li>
       <li *ngIf="save==0">
-        <button class="nav-save-btn_ btn waves-effect waves-light" (click)="submitSurveyData()">
+        <button class="nav-save-btn_ btn waves-effect waves-light" (click)="submitSurveyData()" onclick="btn_clear()">
           Guardar
         </button>
       </li>

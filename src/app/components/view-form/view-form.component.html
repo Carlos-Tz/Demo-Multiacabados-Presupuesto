@@ -1,281 +1,372 @@
-<app-navbar [submitSurveyData]="submitSurveyData"
-            [myForm1]="myForm1"
-            [save]="save"
-            [goBack]="goBack">
+<app-navbar [submitSurveyData]="submitSurveyData" [myForm1]="myForm1" [save]="save" [goBack]="goBack">
 </app-navbar>
 <div class="app">
   <form [formGroup]="myForm1" (ngSubmit)="submitSurveyData()" novalidate autocomplete="off">
-  <section>
-    <div class="page">
-      <div class="inner">
-        <header class="header">
-          <div class="logo">
-            <img src="assets/multi.jpg" alt="">
-          </div>
-          <div class="title ">
-            <h3>MULTIACABADOS REPINTADO AUTOMOTRIZ</h3><br>
-            <p>CENTRO DE EVALUACIÓN Y REPARACIÓN</p>
-            <p>multiacabadosmorelia@hotmail.com</p>
-            <p><b>Tel. (443) 326-28-42 / (443) 156-23-09</b></p>
-          </div>
-          <div class="budget">
-            <table >
-              <tr>
-                <td id="budget">PRESUPUESTO</td>
-              </tr>
+    <section>
+      <div class="page">
+        <div class="inner">
+          <header class="header">
+            <div class="logo">
+              <img src="assets/multi.jpg" alt="">
+            </div>
+            <div class="title ">
+              <h3>MULTIACABADOS REPINTADO AUTOMOTRIZ</h3><br>
+              <p>CENTRO DE EVALUACIÓN Y REPARACIÓN</p>
+              <p>multiacabadosmorelia@hotmail.com</p>
+              <p><b>Tel. (443) 326-28-42 / (443) 156-23-09</b></p>
+            </div>
+            <div class="budget">
+              <table>
+                <tr>
+                  <td id="budget">PRESUPUESTO</td>
+                </tr>
 
+                <tr>
+                  <td id="_budg">
+                    <input type="number" id="orden" formControlName="orden" id="orden" [(ngModel)]="form_.orden"
+                      autofocus tabindex="0" class="focusNext">
+                  </td>
+                </tr>
+              </table>
+              <!-- <img src="assets/full.PNG" style="width:100%; margin-top:2mm"> -->
+            </div>
+          </header>
+          <section class="content">
+            <table id="tab1">
               <tr>
-                <td id="_budg">
-                  <input type="number" id="orden" formControlName="orden" id="orden" [(ngModel)]="form_.orden" autofocus  tabindex="0" class="focusNext">
+                <td>
+                  <span class="line">Expedido en Morelia Mich a: </span>
+                  <input id="date" type="text" class="left-aligned" value={{form_.fecha}}>
                 </td>
               </tr>
             </table>
-            <!-- <img src="assets/full.PNG" style="width:100%; margin-top:2mm"> -->
-          </div>
-        </header>
-        <section class="content">
-          <table id="tab1">
-            <tr>
-              <td>
-                <span class="line">Expedido en Morelia Mich a: </span>
-                <input id="date" type="text" class="left-aligned" value={{form_.fecha}}>
-              </td>
-            </tr>
-          </table>
-          <table id="tab3">
-            <tr>
-              <td>
-                <span class="line">Nombre: </span>
-                <input id="name" type="text" class="left-aligned focusNext" formControlName="nombre" [(ngModel)]="form_.nombre" tabindex="1">
-              </td>
-              <!-- <td>
+            <table id="tab3">
+              <tr>
+                <td>
+                  <span class="line">Nombre: </span>
+                  <input id="name" type="text" class="left-aligned focusNext" formControlName="nombre"
+                    [(ngModel)]="form_.nombre" tabindex="1">
+                </td>
+                <!-- <td>
                 <span class="line">Unidad: </span>
                 <input id="unit" type="text" class="left-aligned">
               </td> -->
-            </tr>
-          </table>
-          <table id="tab3">
-            <tr>
-              <td>
-                <span class="line">Domicilio: </span>
-                <input id="adress" type="text" class="left-aligned focusNext" formControlName="domicilio" [(ngModel)]="form_.domicilio" tabindex="2">
-              </td>
-            </tr>
-          </table>
-          <table id="tab2">
-            <tr>
-              <td id="city">
-                <span class="line">Ciudad: </span>
-                <input id="cit" type="text" class="left-aligned focusNext" formControlName="ciudad" [(ngModel)]="form_.ciudad" tabindex="3">
-              </td>
-              <td id="city">
-                <span class="line">RFC: </span>
-                <input id="rfc" type="text" class="left-aligned focusNext" formControlName="rfc" [(ngModel)]="form_.rfc" tabindex="4">
-              </td>
-            </tr>
-          </table>
+              </tr>
+            </table>
+            <table id="tab3">
+              <tr>
+                <td>
+                  <span class="line">Domicilio: </span>
+                  <input id="adress" type="text" class="left-aligned focusNext" formControlName="domicilio"
+                    [(ngModel)]="form_.domicilio" tabindex="2">
+                </td>
+              </tr>
+            </table>
+            <table id="tab2">
+              <tr>
+                <td id="city">
+                  <span class="line">Ciudad: </span>
+                  <input id="cit" type="text" class="left-aligned focusNext" formControlName="ciudad"
+                    [(ngModel)]="form_.ciudad" tabindex="3">
+                </td>
+                <td id="city">
+                  <span class="line">RFC: </span>
+                  <input id="rfc" type="text" class="left-aligned focusNext" formControlName="rfc"
+                    [(ngModel)]="form_.rfc" tabindex="4">
+                </td>
+              </tr>
+            </table>
 
-          <section class="section2" [formGroup]="myForm">
-            <div class="table" id="main_table" formArrayName="units">
-              <div class="tr thead">
-                <!-- <div class="td">CANT.</div> -->
-                <div class="td">DESCRIPCION</div>
-                <div class="td">HOJALATERIA</div>
-                <div class="td">REFACCIÓN</div>
-                <div class="td">PINTURA</div>
-                <!-- <div class="td">P.UNIT.</div> -->
-                <div class="td">IMPORTE</div>
-              </div>
-              <!-- <div *ngFor="let unit of getControls(myForm, 'units'); let i=index" class="tr" [formGroupName]="i">
-                  <div class="td"><input type="text" class="descripcion"></div>
-                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria'></div>
-                  <div class="td"><input type="number" formControlName="refaccion" ></div>
-                  <div class="td"><input type="number" formControlName="pintura" ></div>
+            <section class="section2" [formGroup]="myForm">
+              <div class="table" id="main_table" formArrayName="units">
+                <div class="tr thead">
+                  <div class="td"></div>
+                  <div class="td">DESCRIPCION</div>
+                  <div class="td">HOJALATERIA</div>
+                  <div class="td">REFACCIÓN</div>
+                  <div class="td">PINTURA</div>
+                  <div class="td">IMPORTE</div>
+                </div>
+                <div class="tr" [formGroupName]="0">
+                  <div class="td">
+                    <input type="text" tabindex="5" class="focusNext" formControlName="tipo" [(ngModel)]="form_.tipo0">
+                  </div>
+                  <div class="td"><input type="text" tabindex="6" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc0"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria0'
+                      tabindex="7" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura0"
+                      tabindex="8" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion0"
+                      tabindex="9" class="focusNext"></div>
                   <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div> -->
-              <div class="tr" [formGroupName]="0">
-                <div class="td"><input type="text" tabindex="5" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc0"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria0' tabindex="6" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion0" tabindex="7" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura0" tabindex="8" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="1">
-                <div class="td"><input type="text" tabindex="9" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc1"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria1' tabindex="10" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion1" tabindex="11" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura1" tabindex="12" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="2">
-                <div class="td"><input type="text" tabindex="13" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc2"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria2' tabindex="14" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion2" tabindex="15" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura2" tabindex="16" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="3">
-                <div class="td"><input type="text" tabindex="17" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc3"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria3' tabindex="18" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion3" tabindex="19" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura3" tabindex="20" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="4">
-                <div class="td"><input type="text" tabindex="21" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc4"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria4' tabindex="22" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion4" tabindex="23" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura4" tabindex="24" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="5">
-                <div class="td"><input type="text" tabindex="25" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc5"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria5' tabindex="26" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion5" tabindex="27" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura5" tabindex="28" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="6">
-                <div class="td"><input type="text" tabindex="29" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc6"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria6' tabindex="30" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion6" tabindex="31" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura6" tabindex="32" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="7">
-                <div class="td"><input type="text" tabindex="33" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc7"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria7' tabindex="34" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion7" tabindex="35" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura7" tabindex="36" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="8">
-                <div class="td"><input type="text" tabindex="37" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc8"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria8' tabindex="38" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion8" tabindex="39" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura8" tabindex="40" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="9">
-                <div class="td"><input type="text" tabindex="41" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc9"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria9' tabindex="42" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion9" tabindex="43" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura9" tabindex="44" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="10">
-                <div class="td"><input type="text" tabindex="45" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc10"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria10' tabindex="46" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion10" tabindex="47" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura10" tabindex="48" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="11">
-                <div class="td"><input type="text" tabindex="49" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc11"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria11' tabindex="50" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion11" tabindex="51" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura11" tabindex="52" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="12">
-                <div class="td"><input type="text" tabindex="53" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc12"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria12' tabindex="54" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion12" tabindex="55" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura12" tabindex="56" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="13">
-                <div class="td"><input type="text" tabindex="57" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc13"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria13' tabindex="58" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion13" tabindex="59" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura13" tabindex="60" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="14">
-                <div class="td"><input type="text" tabindex="61" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc14"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria14' tabindex="62" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion14" tabindex="63" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura14" tabindex="64" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="15">
-                <div class="td"><input type="text" tabindex="65" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc15"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria15' tabindex="66" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion15" tabindex="67" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura15" tabindex="68" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="16">
-                <div class="td"><input type="text" tabindex="69" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc16"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria16' tabindex="70" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion16" tabindex="71" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura16" tabindex="72" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="17">
-                <div class="td"><input type="text" tabindex="73" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc17"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria17' tabindex="74" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion17" tabindex="75" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura17" tabindex="76" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="18">
-                <div class="td"><input type="text" tabindex="77" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc18"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria18' tabindex="78" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion18" tabindex="79" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura18" tabindex="80" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-              <div class="tr" [formGroupName]="19">
-                <div class="td"><input type="text" tabindex="81" class="focusNext" formControlName="desc" [(ngModel)]="form_.desc19"></div>
-                <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria19' tabindex="82" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion19" tabindex="83" class="focusNext"></div>
-                <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura19" tabindex="84" class="focusNext"></div>
-                <div class="td"><input class="importe" formControlName="subtotal"></div>
-              </div>
-
-              
-
-            </div>
-            <div class="table" id="warranty">
-              <div class="tr">
-                <div class="td" id="_warr"><span>TODA REPARACIÓN TIENE GARANTÍA POR 60 DIAS EN MANO DE OBRA Y EN
-                    REFACCIONES LA ESPECIFICADA POR EL FABRICANTE, SIEMPRE Y CUANDO NO MANIFIESTE MAL USO, NEGLIGENCIA O
-                    DESCUIDO.</span></div>
-                <div class="td">
-                  <label for="total">TOTAL $</label>
                 </div>
-                <div class="td">
-                  <input  class="_total" value="{{ total | currency:'USD':'symbol-narrow':'1.2-2'}}">
+                <div class="tr" [formGroupName]="1">
+                  <div class="td"><input type="text" tabindex="10" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo1"></div>
+                  <div class="td"><input type="text" tabindex="11" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc1"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria1'
+                      tabindex="12" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura1"
+                      tabindex="13" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion1"
+                      tabindex="14" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
                 </div>
-              </div>
-            </div>
-          </section>
-          <section class="section3">
+                <div class="tr" [formGroupName]="2">
+                  <div class="td"><input type="text" tabindex="15" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo2"></div>
+                  <div class="td"><input type="text" tabindex="16" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc2"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria2'
+                      tabindex="17" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura2"
+                      tabindex="18" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion2"
+                      tabindex="19" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="3">
+                  <div class="td"><input type="text" tabindex="20" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo3"></div>
+                  <div class="td"><input type="text" tabindex="21" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc3"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria3'
+                      tabindex="22" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura3"
+                      tabindex="23" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion3"
+                      tabindex="24" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="4">
+                  <div class="td"><input type="text" tabindex="25" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo4"></div>
+                  <div class="td"><input type="text" tabindex="26" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc4"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria4'
+                      tabindex="27" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura4"
+                      tabindex="28" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion4"
+                      tabindex="29" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="5">
+                  <div class="td"><input type="text" tabindex="30" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo5"></div>
+                  <div class="td"><input type="text" tabindex="31" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc5"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria5'
+                      tabindex="32" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura5"
+                      tabindex="33" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion5"
+                      tabindex="34" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="6">
+                  <div class="td"><input type="text" tabindex="35" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo6"></div>
+                  <div class="td"><input type="text" tabindex="36" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc6"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria6'
+                      tabindex="37" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura6"
+                      tabindex="38" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion6"
+                      tabindex="39" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="7">
+                  <div class="td"><input type="text" tabindex="40" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo7"></div>
+                  <div class="td"><input type="text" tabindex="41" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc7"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria7'
+                      tabindex="42" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura7"
+                      tabindex="43" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion7"
+                      tabindex="44" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="8">
+                  <div class="td"><input type="text" tabindex="45" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo8"></div>
+                  <div class="td"><input type="text" tabindex="46" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc8"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria8'
+                      tabindex="47" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura8"
+                      tabindex="48" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion8"
+                      tabindex="49" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="9">
+                  <div class="td"><input type="text" tabindex="50" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo9"></div>
+                  <div class="td"><input type="text" tabindex="51" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc9"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria9'
+                      tabindex="52" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura9"
+                      tabindex="53" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion9"
+                      tabindex="54" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="10">
+                  <div class="td"><input type="text" tabindex="55" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo10"></div>
+                  <div class="td"><input type="text" tabindex="56" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc10"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria10'
+                      tabindex="57" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura10"
+                      tabindex="58" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion10"
+                      tabindex="59" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="11">
+                  <div class="td"><input type="text" tabindex="60" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo11"></div>
+                  <div class="td"><input type="text" tabindex="61" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc11"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria11'
+                      tabindex="62" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura11"
+                      tabindex="63" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion11"
+                      tabindex="64" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="12">
+                  <div class="td"><input type="text" tabindex="65" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo12"></div>
+                  <div class="td"><input type="text" tabindex="66" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc12"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria12'
+                      tabindex="67" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura12"
+                      tabindex="68" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion12"
+                      tabindex="69" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
+                <div class="tr" [formGroupName]="13">
+                  <div class="td"><input type="text" tabindex="70" class="focusNext" formControlName="tipo"
+                      [(ngModel)]="form_.tipo13"></div>
+                  <div class="td"><input type="text" tabindex="71" class="focusNext" formControlName="desc"
+                      [(ngModel)]="form_.desc13"></div>
+                  <div class="td"><input type="number" formControlName="hojalateria" [(ngModel)]='form_.hojalateria13'
+                      tabindex="72" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="pintura" [(ngModel)]="form_.pintura13"
+                      tabindex="73" class="focusNext"></div>
+                  <div class="td"><input type="number" formControlName="refaccion" [(ngModel)]="form_.refaccion13"
+                      tabindex="74" class="focusNext"></div>
+                  <div class="td"><input class="importe" formControlName="subtotal"></div>
+                </div>
 
-            <div>
-              <p id= "_subtitle"><b>CANTIDAD TOTAL CON LETRA</b></p>
-              <table id="_total_letter">
+              </div>
+              <div class="tr" style="width: 100%;">
+                  <div class="td" style="border: none; width: 7mm;"></div>
+                  <div class="td" style="border: none; width: 9.4cm;">R=Reparación C=Cambio</div>
+                  <div class="td" style="width: 2.2cm; border-left: 1px solid #bbb; text-align: center;">
+                    {{ hojt | currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                  <div class="td" style="width: 2.2cm; text-align: center;">
+                    {{ pint | currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                  <div class="td" style="width: 2.2cm; text-align: center;">
+                    {{ reft | currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                  <div class="td" style="width: 2.2cm; text-align: center;">
+                    {{ totalr | currency:'USD':'symbol-narrow':'1.2-2'}}</div>
+                </div>
+  
+                <div class="table" id="warranty">
+                  <div class="tr">
+                    <div class="td" id="_warr"><span>TODA REPARACIÓN TIENE GARANTÍA POR 60 DIAS EN MANO DE OBRA Y EN
+                        REFACCIONES LA ESPECIFICADA POR EL FABRICANTE, SIEMPRE Y CUANDO NO MANIFIESTE MAL USO, NEGLIGENCIA
+                        O
+                        DESCUIDO.</span></div>
+                    <div class="td">
+                      <div style="border-bottom: 1px solid #fff;">
+                        <label for="total">SUB $</label>
+                      </div>
+                      <div style="border-bottom: 1px solid #fff;">
+                        <label for="total">IVA $</label>
+                      </div>
+                      <div>
+                        <label for="total">TOTAL $</label>
+                      </div>
+                    </div>
+                    <div class="td">
+                      <div style="border-bottom: 1px solid #222;">
+                        <input class="_total" value="{{ totalr | currency:'USD':'symbol-narrow':'1.2-2'}}">
+                      </div>
+                      <div style="border-bottom: 1px solid #222;">
+                        <input class="_total" value="{{ iva | currency:'USD':'symbol-narrow':'1.2-2'}}">
+                      </div>
+                      <div>
+                        <input class="_total" value="{{ total | currency:'USD':'symbol-narrow':'1.2-2'}}">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </section>
+            <section class="section2a" style="margin-bottom: 1em;" [formGroup]="myForm2">
+                <div class="table">
+                  <div class="tr thead">
+                    <div class="td" style="border-right: none;">ANEXO</div>
+                    <div class="td"></div>
+                  </div>
+                  <div class="tr">
+                    <div class="td" style="width: 70%;">
+                      <textarea style="border:none; width: 100%; resize: none; overflow: hidden; height: 2cm;"
+                        formControlName="anexo" [(ngModel)]="form_.anexo"></textarea>
+                    </div>
+                    <div class="td">
+                      <div class="sign">
+                        <div class="signature">
+                          <div id="contSign">
+                            <img src="{{form_.firma}}" id="imgSign">
+                          </div>
+                        </div>
+                        <hr>
+                        <div style="text-align: center;">
+                          <p>Autorizo</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            <section class="section3">
+              <div>
+                <p id="_subtitle"><b>CANTIDAD TOTAL CON LETRA</b></p>
+                <table id="_total_letter">
                   <tr>
-                    <td>                      
-                      <input id="_number" type="text" class="left-aligned" value ="{{numero + ' pesos 00/100 MN'}}">
+                    <td>
+                      <input id="_number" type="text" class="left-aligned" value="{{numero + ' pesos 00/100 MN'}}">
                     </td>
                   </tr>
-              </table>
-            </div>
-          </section>
+                </table>
+              </div>
+            </section>
 
-          <section id="_foot">
-            <span>
-             Manuel Herrera 85-A Col. Gertrudis Bocanegra Morelia, Mich.
-            </span>
+            <section id="_foot">
+              <span>
+                Manuel Herrera 85-A Col. Gertrudis Bocanegra Morelia, Mich.
+              </span>
+            </section>
           </section>
-        </section>
-        <div class="no-print" id="printBtn" onclick="pdf()">
-          <img src="assets/save.png" alt="" width="75" height="75">
+          <div class="no-print" id="printBtn" onclick="pdf()">
+            <img src="assets/save.png" alt="" width="75" height="75">
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
   </form>
 </div>

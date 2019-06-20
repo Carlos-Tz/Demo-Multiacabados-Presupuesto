@@ -18,6 +18,7 @@ import { environment } from 'src/environments/environment';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { LoginComponent } from './components/login/login.component';
 import { ViewFormComponent } from './components/view-form/view-form.component';
+import { EditComponent } from './components/edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ViewFormComponent } from './components/view-form/view-form.component';
     DashboardComponent,
     NavbarComponent,
     LoginComponent,
-    ViewFormComponent
+    ViewFormComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,

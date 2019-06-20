@@ -3,8 +3,6 @@ import * as num from 'written-number';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { CurrencyPipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import 'fecha';
-import fechaObj from 'fecha';
 import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/form';
 import { ActivatedRoute } from '@angular/router';
@@ -18,10 +16,15 @@ import { Location } from '@angular/common';
 export class ViewFormComponent implements OnInit {
   myForm: FormGroup;
   myForm1: FormGroup;
+  myForm2: FormGroup;
   total = 0;
+  totalr = 0;
+  iva = 0;
+  hojt = 0;
+  pint = 0;
+  reft = 0;
   myformValuesChanges$;
   numero:  num;
-  fecha: string;
   save = 1;
   form_: Form = {
     $key: '',
@@ -31,6 +34,8 @@ export class ViewFormComponent implements OnInit {
     domicilio: '',
     rfc: '',
     ciudad: '',
+    anexo: '',
+    firma: '',
     hojalateria0: null,
     hojalateria1: null,
     hojalateria2: null,
@@ -45,12 +50,6 @@ export class ViewFormComponent implements OnInit {
     hojalateria11: null,
     hojalateria12: null,
     hojalateria13: null,
-    hojalateria14: null,
-    hojalateria15: null,
-    hojalateria16: null,
-    hojalateria17: null,
-    hojalateria18: null,
-    hojalateria19: null,
     refaccion0: null,
     refaccion1: null,
     refaccion2: null,
@@ -65,12 +64,6 @@ export class ViewFormComponent implements OnInit {
     refaccion11: null,
     refaccion12: null,
     refaccion13: null,
-    refaccion14: null,
-    refaccion15: null,
-    refaccion16: null,
-    refaccion17: null,
-    refaccion18: null,
-    refaccion19: null,
     pintura0: null,
     pintura1: null,
     pintura2: null,
@@ -85,12 +78,6 @@ export class ViewFormComponent implements OnInit {
     pintura11: null,
     pintura12: null,
     pintura13: null,
-    pintura14: null,
-    pintura15: null,
-    pintura16: null,
-    pintura17: null,
-    pintura18: null,
-    pintura19: null,
     desc0: null,
     desc1: null,
     desc2: null,
@@ -105,18 +92,27 @@ export class ViewFormComponent implements OnInit {
     desc11: null,
     desc12: null,
     desc13: null,
-    desc14: null,
-    desc15: null,
-    desc16: null,
-    desc17: null,
-    desc18: null,
-    desc19: null,
+    tipo0: null,
+    tipo1: null,
+    tipo2: null,
+    tipo3: null,
+    tipo4: null,
+    tipo5: null,
+    tipo6: null,
+    tipo7: null,
+    tipo8: null,
+    tipo9: null,
+    tipo10: null,
+    tipo11: null,
+    tipo12: null,
+    tipo13: null,
     total: null
   };
 
   constructor(
     private fb: FormBuilder,
     private fb1: FormBuilder,
+    private fb2: FormBuilder,
     private currencyPipe: CurrencyPipe,
     public toastr: ToastrService,
     public formApi: FormService,
@@ -125,9 +121,6 @@ export class ViewFormComponent implements OnInit {
   ) {  }
 
   ngOnInit() {
-    //this.fecha = fechaObj.format(new Date(), 'D [de] MMMM [de] YYYY');
-    //this.form_.fecha = this.fecha;
-   // this.formApi.GetFormsList();
     const key = this.actRouter.snapshot.paramMap.get('key');
     this.formApi.GetForm(key).valueChanges().subscribe(data => {
       this.form_ = data;
@@ -161,7 +154,8 @@ export class ViewFormComponent implements OnInit {
       refaccion: [''],
       pintura: [''],
       subtotal: [''],
-      desc: ['']
+      desc: [''],
+      tipo: ['']
     });
   }
 
@@ -176,9 +170,11 @@ export class ViewFormComponent implements OnInit {
 
   private updateTotalUnitPrice(units: any) {
     const control = <FormArray>this.myForm.controls['units'];
-    this.total = 0;
+    this.totalr = 0;
+    this.hojt = 0;
+    this.pint = 0;
+    this.reft = 0;
     for (let i in units) {
-      //let totalUnitPrice = (units[i].hojalateria + units[i].refaccion + units[i].pintura);
       let totalUnitPrice = 0;
       totalUnitPrice += (units[i].hojalateria ? units[i].hojalateria : 0);
       totalUnitPrice += (units[i].refaccion ? units[i].refaccion : 0);
@@ -187,20 +183,18 @@ export class ViewFormComponent implements OnInit {
       
       if(totalUnitPrice != 0)
       control.at(+i).get('subtotal').setValue(totalUnitPriceFormatted, {onlySelf: true, emitEvent: false});
-      this.total += totalUnitPrice;
+      this.totalr += totalUnitPrice;
+      this.hojt += (units[i].hojalateria ? units[i].hojalateria : 0);
+      this.pint += (units[i].pintura ? units[i].pintura : 0);
+      this.reft += (units[i].refaccion ? units[i].refaccion : 0);
     }
+    this.iva = Math.round(this.totalr * 0.16);
+    this.total = this.totalr + this.iva;
   }
 
-  /* ResetForm() {
-    this.myForm.reset();
-    this.myForm1.reset();
-  } */
 
   submitSurveyData = () => {
-    //this.formApi.AddForm(this.form_);
-   // this.toastr.success('Encuesta Enviada!');
-    this.toastr.info('Opción deshabilitada!')
-   // this.ResetForm();
+    this.toastr.info('Opción deshabilitada!');
   }
 
   sForm() {
@@ -211,6 +205,9 @@ export class ViewFormComponent implements OnInit {
       domicilio: ['', [Validators.required]],
       ciudad: [''],
       rfc: ['']
+    });
+    this.myForm2 = this.fb2.group({
+      anexo: ['']
     });
   }
 

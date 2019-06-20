@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 /* import { AuthService } from '../../shared/auth.service'; */
 import { Observable } from 'rxjs';
 //import { ActivatedRoute } from '@angular/router';
-import 'fecha';
-import fechaObj from 'fecha';
+//import 'fecha';
+//import fechaObj from 'fecha';
 import { Location } from '@angular/common';
 import { FormService } from 'src/app/services/form.service';
 import { Form } from 'src/app/models/form';
@@ -17,7 +17,7 @@ import { Form } from 'src/app/models/form';
 export class DashboardComponent implements OnInit {
   Form: Form[];
   
-  fecha = '';
+  //fecha = '';
   save = 2;
   public dtOptions = {};
   //surveys = [];
@@ -29,7 +29,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.fecha = fechaObj.format(new Date(), 'D [de] MMMM [de] YYYY');
+   // this.fecha = fechaObj.format(new Date(), 'D [de] MMMM [de] YYYY');
    // this.key = this.actRouter.snapshot.paramMap.get('key');
     /* this.dataSource = this.surveyApi.getAll(this.key);
     this.surveyApi.getCurrentData(this.key).valueChanges().subscribe(data => {
