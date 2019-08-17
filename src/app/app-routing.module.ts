@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: '', component: FormComponent},
   {path: 'panel', component: DashboardComponent, canActivate: [AuthGuard]},
-  {path: 'view/:key', component: ViewFormComponent, canActivate: [AuthGuard]},
+ /*  {path: 'view/:key', component: ViewFormComponent, canActivate: [AuthGuard]}, */
   {path: 'edit/:key', component: EditComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard]}
  /*  {path: 'login', component: LoginComponent, canActivate: [SecureInnerPagesGuard]},

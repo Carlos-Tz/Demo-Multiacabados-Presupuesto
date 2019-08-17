@@ -10,8 +10,9 @@ export class FormService {
   formObject: AngularFireObject<any>;
   constructor(private db: AngularFireDatabase) { }
 
-  AddForm(form: Form) {
-    this.formsList.push({
+  AddForm(form: object) {
+    this.formsList.push(form as Form
+      /* {
       nombre: form.nombre,
       fecha: form.fecha,
       orden: form.orden,
@@ -91,7 +92,8 @@ export class FormService {
       tipo12: form.tipo12,
       tipo13: form.tipo13,
       total: form.total
-    });
+    } */
+    );
   }
 
   GetFormsList() {
@@ -102,5 +104,10 @@ export class FormService {
   GetForm(key: string) {
     this.formObject = this.db.object('forms-list/' + key);
     return this.formObject;
+  }
+
+  UpdateForm(form: Form, key: string) {
+    this.db.object('forms-list/' + key)
+    .update(form);
   }
 }
